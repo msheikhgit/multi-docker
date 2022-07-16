@@ -11,14 +11,14 @@ script:
   - docker run -e CI=true msheikh/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t msheikh/multi-client ./client
-  - docker build -t msheikh/multi-nginx ./nginx
-  - docker build -t msheikh/multi-server ./server
-  - docker build -t msheikh/multi-worker ./worker
+  - docker build -t msheikhdocker/multi-client ./client
+  - docker build -t msheikhdocker/multi-nginx ./nginx
+  - docker build -t msheikhdocker/multi-server ./server
+  - docker build -t msheikhdocker/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # Take those images and push them to docker hub
-  - docker push msheikh/multi-client
-  - docker push msheikh/multi-nginx
-  - docker push msheikh/multi-server
-  - docker push msheikh/multi-worker
+  - docker push msheikhdocker/multi-client
+  - docker push msheikhdocker/multi-nginx
+  - docker push msheikhdocker/multi-server
+  - docker push msheikhdocker/multi-worker
